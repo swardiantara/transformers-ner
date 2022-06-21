@@ -2,8 +2,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import CrossEntropyLoss
-from transformers.modeling_electra import ElectraModel
-from transformers.modeling_electra import ElectraPreTrainedModel
+from transformers.models.electra.modeling_electra import ElectraModel
+from transformers.models.electra.modeling_electra import ElectraPreTrainedModel
+# from transformers.modeling_electra import ElectraModel
+# from transformers.modeling_electra import ElectraPreTrainedModel
 
 from .layers.linears import PoolerEndLogits, PoolerStartLogits
 from .losses.crf import CRF

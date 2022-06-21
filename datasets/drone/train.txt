@@ -1,0 +1,3129 @@
+Home O
+Point O
+recorded O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Large O
+Wind B-ISS
+Velocity I-ISS
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+Weak O
+signal O
+Avoid O
+blocking O
+the O
+antennas O
+and O
+keep O
+the O
+antennas O
+parallel O
+to O
+and O
+facing O
+toward O
+the O
+aircraft B-CMP
+during O
+flight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-CMP
+Gear I-CMP
+Lowering B-ACT
+
+To O
+take O
+off O
+in O
+mode O
+toggle O
+Flight O
+Mode O
+Switch O
+to O
+another O
+mode O
+and O
+then O
+toggle O
+it O
+back O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-CMP
+gear I-CMP
+Avoidance O
+Disabled O
+
+Strong O
+Interference B-ISS
+to O
+Aircraft B-CMP
+Signal O
+interruption O
+may O
+be O
+more O
+likely O
+Fly O
+with O
+caution O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+Switched O
+to O
+T B-STE
+Tripod B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+In B-STE
+Flight I-STE
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Remote O
+controller O
+assisted O
+takeoff O
+initiated O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+9 O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH O
+Altitude O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+Switched I-STE
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+The O
+remaining O
+battery B-CMP
+is O
+only O
+enough O
+for O
+RTH B-ACT
+Return O
+home O
+now O
+
+Landing B-CMP
+gear I-CMP
+Avoidance O
+Disabled O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-FNC
+Protection I-FNC
+Activated O
+Aircraft B-CMP
+will O
+decelerate O
+during O
+landing B-ACT
+
+Taking B-ACT
+Off I-ACT
+
+Maximum B-ISS
+flight I-ISS
+distance I-ISS
+reached O
+Adjust O
+the O
+distance O
+in O
+MC O
+Settings B-FNC
+if O
+required O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GEO O
+You O
+are O
+in O
+a O
+Warning B-ISS
+Zone I-ISS
+School O
+Fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+RTH B-ACT
+Altitude O
+65FT O
+
+In B-STE
+Flight I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle O
+Avoided B-ACT
+Revise O
+Flight O
+Route O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+To O
+take O
+off O
+in O
+mode O
+toggle O
+Flight O
+Mode O
+Switch O
+to O
+another O
+mode O
+and O
+then O
+toggle O
+it O
+back O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-FNC
+Protection I-FNC
+Activated O
+Aircraft B-CMP
+will O
+decelerate O
+during O
+landing B-ACT
+
+Drag O
+a O
+box O
+around O
+or O
+tap O
+a O
+target O
+on O
+screen O
+Then O
+tap O
+Go O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+ÃÂÃÂ O
+30m O
+
+Compass B-CMP
+abnormalSolution O
+1 O
+Ensure O
+there O
+are O
+no O
+magnets O
+or O
+metal O
+objects O
+near O
+the O
+aircraft B-CMP
+The O
+ground O
+or O
+walls O
+may O
+contain O
+metal O
+Move O
+away O
+from O
+sources O
+of O
+interference B-ISS
+before O
+attempting O
+flight O
+2 O
+Calibrate B-ACT
+Compass B-CMP
+Before O
+Takeoff O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Large O
+Wind B-ISS
+Velocity I-ISS
+
+High O
+wind B-ISS
+velocity I-ISS
+Fly O
+with O
+caution O
+
+High O
+wind B-ISS
+velocity I-ISS
+Fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+Mode I-STE
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Home O
+Point O
+Updated O
+
+Home O
+Point O
+Updated O
+
+Gimbal B-CMP
+Pitch I-CMP
+Limit O
+Reached O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-FNC
+Protection I-FNC
+Activated O
+Aircraft B-CMP
+will O
+decelerate O
+during O
+landing B-ACT
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+
+Mobile O
+device O
+CPU B-CMP
+fully O
+loaded O
+Related O
+performance O
+will O
+be O
+affected O
+
+Aircraft B-CMP
+is O
+returning O
+to O
+the O
+Home O
+Point O
+RTH B-ACT
+Altitude O
+is O
+30m O
+You O
+can O
+reset O
+the O
+RTH B-ACT
+Altitude O
+in O
+Remote O
+Controller B-CMP
+Settings B-FNC
+after O
+cancelling O
+RTH B-ACT
+if O
+necessary O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+Mode I-STE
+
+Landing B-CMP
+Gear I-CMP
+Lowering B-ACT
+
+Home O
+Point O
+Updated O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+7 O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Your O
+palm O
+is O
+too O
+far O
+away O
+from O
+the O
+aircraft B-CMP
+Please O
+step O
+closer O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Obstacle B-FNC
+Sensing I-FNC
+will O
+be O
+disabled O
+when O
+aircraft B-CMP
+is O
+landing B-ACT
+Fly O
+with O
+caution O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Tip O
+Aircraft B-CMP
+reached O
+maximum B-ISS
+distance I-ISS
+please I-ISS
+pay O
+attention O
+to O
+flight O
+safety O
+
+Drag O
+a O
+box O
+around O
+or O
+tap O
+a O
+target O
+on O
+screen O
+Then O
+tap O
+Go O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+In O
+Flight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Home O
+Point O
+Updated O
+
+Command O
+Timeout O
+
+Forward O
+Obstacle B-FNC
+Sensing I-FNC
+not O
+Responding O
+
+In B-STE
+Flight I-STE
+
+Tap O
+the O
+screen O
+to O
+focus O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+Tap O
+the O
+screen O
+lightly O
+to O
+focus O
+
+Tap O
+the O
+screen O
+lightly O
+to O
+focus O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Aircraft B-CMP
+close O
+to O
+Home O
+Point O
+shifts O
+to O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Landing B-CMP
+gear I-CMP
+Avoidance O
+Disabled O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Switched O
+to O
+T B-STE
+Tripod I-STE
+Mode I-STE
+
+Home O
+Point O
+recorded O
+ft O
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+T B-STE
+Tripod B-STE
+Mode I-STE
+
+GEO O
+You O
+are O
+in O
+a O
+Warning B-ISS
+Zone I-ISS
+School O
+Fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-CMP
+gear I-CMP
+Avoidance O
+Disabled O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+Weak O
+signal O
+Avoid O
+blocking O
+the O
+antennas O
+and O
+keep O
+the O
+antennas O
+parallel O
+to O
+and O
+facing O
+toward O
+the O
+aircraft B-CMP
+during O
+flight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Tap O
+the O
+screen O
+to O
+focus O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GEO I-STE
+You O
+are O
+in O
+a O
+Warning B-ISS
+Zone I-ISS
+School O
+Fly O
+with O
+caution O
+
+Ground O
+Plain O
+Safe O
+to O
+Land O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Weak O
+signal O
+Avoid O
+blocking O
+the O
+antennas O
+and O
+keep O
+the O
+antennas O
+parallel O
+to O
+and O
+facing O
+toward O
+the O
+aircraft B-CMP
+during O
+flight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-CMP
+gear I-CMP
+Avoidance O
+Disabled O
+
+Your O
+palm O
+is O
+too O
+far O
+away O
+from O
+the O
+aircraft B-CMP
+Please O
+step O
+closer O
+
+Home O
+Point O
+Updated O
+
+Attitude O
+is O
+too O
+large O
+
+High O
+wind B-ISS
+velocity I-ISS
+Fly O
+with O
+caution O
+and O
+land O
+in O
+a O
+safe O
+place O
+ASAP O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Updated O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+T B-STE
+Tripod B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Tip O
+Aircraft B-CMP
+reached O
+maximum B-ISS
+distance I-ISS
+please O
+pay O
+attention O
+to O
+flight O
+safety O
+
+GEO O
+You O
+are O
+in O
+a O
+Warning B-ISS
+Zone I-ISS
+School O
+Fly O
+with O
+caution O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+Compass B-CMP
+abnormalSolution O
+1 O
+Ensure O
+there O
+are O
+no O
+magnets O
+or O
+metal O
+objects O
+near O
+the O
+aircraft B-CMP
+The O
+ground O
+or O
+walls O
+may O
+contain O
+metal O
+Move O
+away O
+from O
+sources O
+of O
+interference B-ISS
+before O
+attempting O
+flight O
+2 O
+Calibrate B-ACT
+Compass B-CMP
+Before O
+Takeoff O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Max B-ISS
+Flight I-ISS
+Altitude I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+7 O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+15 O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Downlink B-CMP
+Lost O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GEO O
+You O
+are O
+in O
+a O
+Warning B-ISS
+Zone I-ISS
+School O
+Fly O
+with O
+caution O
+
+Home O
+Point O
+Updated O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+15 O
+
+Attitude O
+is O
+too O
+large O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+Data O
+Recorder O
+File O
+Index O
+is O
+8 O
+
+Tap O
+the O
+screen O
+lightly O
+to O
+focus O
+
+Remote O
+controller B-CMP
+assisted O
+takeoff O
+initiated O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+45 O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+6 O
+
+Landing B-ACT
+Canceled O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+SD B-CMP
+card I-CMP
+write O
+speed O
+is O
+too O
+slow O
+Not O
+suitable O
+for O
+shooting O
+a O
+4K O
+video O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-CMP
+Gear I-CMP
+Raising B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+Locating O
+Landing B-ACT
+Point O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+30 O
+
+Switched O
+to O
+P B-STE
+Positioning I-STE
+Mode I-STE
+
+Tap O
+the O
+screen O
+lightly O
+to O
+focus O
+
+Strong O
+Interference B-ISS
+to O
+Aircraft B-CMP
+Signal O
+interruption O
+may O
+be O
+more O
+likely O
+Fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Gimbal B-CMP
+Pitch I-CMP
+Limit O
+Reached O
+
+In B-STE
+Flight I-STE
+
+Landing B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Tap O
+the O
+screen O
+lightly O
+to O
+focus O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle O
+Avoided B-ACT
+Revise O
+Flight O
+Route O
+
+Taking B-ACT
+Off I-ACT
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+ÃÂÃÂ O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Ground O
+Plain O
+Safe O
+to O
+Land O
+
+Maximum B-ISS
+flight I-ISS
+distance I-ISS
+reached O
+Adjust O
+the O
+distance O
+in O
+MC O
+Settings B-FNC
+if O
+required O
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+Data O
+Recorder O
+File O
+Index O
+is O
+9 O
+
+Palm B-FNC
+Control I-FNC
+in O
+Process O
+
+Maximum B-ISS
+flight I-ISS
+distance I-ISS
+reached O
+Adjust O
+the O
+distance O
+in O
+MC O
+Settings B-FNC
+if O
+required O
+
+Landing B-ACT
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Strong O
+Interference B-ISS
+to O
+Aircraft B-CMP
+Signal O
+interruption O
+may O
+be O
+more O
+likely O
+Fly O
+with O
+caution O
+
+Landing B-CMP
+Gear I-CMP
+Raised B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Large O
+Wind B-ISS
+Velocity I-ISS
+
+Tap O
+the O
+screen O
+lightly O
+to O
+focus O
+
+Max B-ISS
+Flight I-ISS
+Altitude I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Obstacle B-FNC
+Avoidance I-FNC
+disabled O
+Landing B-CMP
+gear I-CMP
+lowered B-ACT
+Obstacle B-FNC
+Avoidance I-FNC
+has O
+been O
+disabled O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Updated O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Your O
+palm O
+is O
+too O
+close O
+to O
+the O
+aircraft B-CMP
+Please O
+step O
+farther O
+away O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Not O
+Allowed O
+to O
+change O
+Aircraft B-CMP
+Mode O
+If O
+needed O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Tip O
+Aircraft B-CMP
+reached O
+maximum B-ISS
+distance I-ISS
+please O
+pay O
+attention O
+to O
+flight O
+safety O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Max B-ISS
+Flight I-ISS
+Altitude I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+Attitude O
+is O
+too O
+large O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+57 O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Large O
+Wind B-ISS
+Velocity I-ISS
+
+High O
+wind B-ISS
+velocity I-ISS
+Ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+and O
+fly O
+with O
+caution O
+
+Landing B-ACT
+Canceled O
+
+Palm B-FNC
+Control I-FNC
+in O
+Process O
+
+High O
+wind B-ISS
+velocity I-ISS
+Ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+and O
+fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle B-FNC
+Sensing I-FNC
+will O
+be O
+disabled O
+when O
+aircraft B-CMP
+is O
+landing B-ACT
+Fly O
+with O
+caution O
+
+Obstacle B-FNC
+Sensing I-FNC
+will O
+be O
+disabled O
+when O
+aircraft B-CMP
+is O
+landing B-ACT
+Fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Locating O
+Landing B-ACT
+Point O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+8 O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Gimbal B-CMP
+Pitch I-CMP
+Reached O
+Movement O
+Limit O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+Mode I-STE
+
+Attitude O
+is O
+too O
+large O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-CMP
+Gear I-CMP
+Lowered B-ACT
+
+Maximum B-ISS
+flight I-ISS
+distance I-ISS
+reached O
+Adjust O
+the O
+distance O
+in O
+MC O
+Settings B-FNC
+if O
+required O
+
+Max B-ISS
+Flight I-ISS
+Altitude I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Can O
+not O
+Identify O
+Subject O
+
+Taking B-ACT
+Off I-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+
+Aircraft B-CMP
+is O
+returning O
+to O
+the O
+Home O
+Point O
+Minimum O
+RTH B-ACT
+Altitude O
+is O
+98ft O
+You O
+can O
+reset O
+the O
+RTH B-ACT
+Altitude O
+in O
+Remote O
+Controller B-CMP
+Settings B-FNC
+after O
+cancelling O
+RTH B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GEO O
+You O
+are O
+in O
+a O
+Warning B-ISS
+Zone I-ISS
+School O
+Fly O
+with O
+caution O
+Compass B-CMP
+abnormalSolution O
+1 O
+Ensure O
+there O
+are O
+no O
+magnets O
+or O
+metal O
+objects O
+near O
+the O
+aircraft B-CMP
+The O
+ground O
+or O
+walls O
+may O
+contain O
+metal O
+Move O
+away O
+from O
+sources O
+of O
+interference B-ISS
+before O
+attempting O
+flight O
+2 O
+Calibrate B-ACT
+Compass B-CMP
+Before O
+Takeoff O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+Home O
+Point O
+Updated O
+
+Aircraft B-CMP
+is O
+returning O
+to O
+the O
+Home O
+Point O
+RTH B-ACT
+Altitude O
+is O
+30m O
+You O
+can O
+reset O
+the O
+RTH B-ACT
+Altitude O
+in O
+Remote O
+Controller B-CMP
+Settings B-FNC
+after O
+cancelling O
+RTH B-ACT
+if O
+necessary O
+
+In B-STE
+Flight I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Your O
+palm O
+is O
+too O
+close O
+to O
+the O
+aircraft B-CMP
+Please O
+step O
+farther O
+away O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Your O
+palm O
+is O
+too O
+close O
+to O
+the O
+aircraft B-CMP
+Please O
+step O
+farther O
+away O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Landing B-ACT
+
+Landing B-FNC
+Protection I-FNC
+Activated O
+Aircraft B-CMP
+will O
+decelerate O
+during O
+landing B-ACT
+
+Landing B-CMP
+gear I-CMP
+Avoidance O
+Disabled O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+off I-ACT
+
+Data O
+Recorder O
+File O
+Index O
+is O
+12 O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Intelligent B-STE
+Flight I-STE
+Modes I-STE
+have O
+not O
+been O
+enabled O
+Enable O
+this O
+option O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+needed O
+
+Aircraft B-CMP
+is O
+returning O
+to O
+the O
+Home O
+Point O
+Minimum O
+RTH B-ACT
+Altitude O
+is30m O
+You O
+can O
+reset O
+the O
+RTH B-ACT
+Altitude O
+in O
+Remote O
+Controller B-CMP
+Settings B-FNC
+after O
+cancelling O
+RTH B-ACT
+
+Taking B-ACT
+Off I-ACT
+
+GEO O
+You O
+are O
+in O
+a O
+Warning B-ISS
+Zone I-ISS
+School O
+Fly O
+with O
+caution O
+
+Taking B-ACT
+Off I-ACT
+
+Another O
+aircraft B-CMP
+is O
+nearby O
+Fly O
+with O
+caution O
+Another O
+aircraft B-CMP
+is O
+dangerously O
+close O
+please O
+descend O
+to O
+a O
+safer O
+altitude O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Data O
+Recorder O
+File O
+Index O
+is O
+29 O
+
+High O
+wind B-ISS
+velocity I-ISS
+Fly O
+with O
+caution O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Obstacle B-FNC
+Sensing I-FNC
+will O
+be O
+disabled O
+when O
+aircraft B-CMP
+is O
+landing B-ACT
+Fly O
+with O
+caution O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Tip O
+Aircraft B-CMP
+reached O
+maximum B-ISS
+distance I-ISS
+please I-ISS
+pay O
+attention O
+to O
+flight O
+safety O
+
+Ground O
+Plain O
+Safe O
+to O
+Land O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Updated O
+
+Switched I-STE
+to O
+T B-STE
+Tripod B-STE
+Mode I-STE
+
+Attitude O
+is O
+too O
+large O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Weak O
+signal O
+Avoid O
+blocking O
+the O
+antennas O
+and O
+keep O
+the O
+antennas O
+parallel O
+to O
+and O
+facing O
+toward O
+the O
+aircraft B-CMP
+during O
+flight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Tap O
+the O
+screen O
+lightly O
+to O
+focus O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle B-FNC
+Sensing I-FNC
+will O
+be O
+disabled O
+when O
+aircraft B-CMP
+is O
+landing B-ACT
+Fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Palm B-FNC
+Control I-FNC
+in O
+Process O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Gimbal B-CMP
+Pitch I-CMP
+Limit O
+Reached O
+
+Taking B-ACT
+Off I-ACT
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in B-STE
+landing I-STE
+
+Obstacle O
+Avoided B-ACT
+Revise O
+Flight O
+Route O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+The O
+remaining O
+battery B-CMP
+is O
+only O
+enough O
+for O
+RTH B-ACT
+Return O
+home O
+now O
+
+To O
+take O
+off O
+in O
+mode O
+toggle O
+Flight O
+Mode O
+Switch O
+to O
+another O
+mode O
+and O
+then O
+toggle O
+it O
+back O
+
+Switched O
+to O
+S B-STE
+Sport B-STE
+Mode I-STE
+
+Ground O
+Plain O
+Safe O
+to O
+Land O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+High O
+wind B-ISS
+velocity I-ISS
+Ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+and O
+fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Gimbal B-CMP
+Roll I-CMP
+Limit O
+Reached O
+
+Can O
+not O
+switch O
+flight O
+mode O
+Turn O
+on O
+Multiple O
+Flight O
+Modes O
+to O
+enable O
+Atti O
+and O
+Sport B-STE
+Modes I-STE
+
+Taking B-ACT
+Off I-ACT
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Not O
+Allowed O
+to O
+change O
+Aircraft B-CMP
+Mode O
+If O
+needed O
+
+High O
+wind B-ISS
+velocity I-ISS
+Fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Max B-ISS
+Flight I-ISS
+Distance I-ISS
+Reached O
+Adjust O
+in O
+Main O
+Controller B-CMP
+Settings B-FNC
+if O
+necessary O
+
+Obstacle B-FNC
+Avoidance I-FNC
+will O
+be O
+disabled O
+in O
+landing B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Landing B-CMP
+gear I-CMP
+Avoidance O
+Disabled O
+
+Attitude O
+is O
+too O
+large O
+
+Attitude O
+is O
+too O
+large O
+
+Downlink B-CMP
+Lost O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Weak O
+signal O
+Avoid O
+blocking O
+the O
+antennas O
+and O
+keep O
+the O
+antennas O
+parallel O
+to O
+and O
+facing O
+toward O
+the O
+aircraft B-CMP
+during O
+flight O
+
+Data O
+Recorder O
+File O
+Index O
+is O
+57 O
+
+Landing B-FNC
+Protection I-FNC
+Activated O
+Aircraft B-CMP
+will O
+decelerate O
+during O
+landing B-ACT
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Attitude O
+is O
+too O
+large O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Taking B-ACT
+Off I-ACT
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+High O
+wind B-ISS
+velocity I-ISS
+Ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+and O
+fly O
+with O
+caution O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Updated O
+
+Attitude O
+is O
+too O
+large O
+
+Maximum B-ISS
+flight I-ISS
+distance I-ISS
+reached O
+Adjust O
+the O
+distance O
+in O
+MC O
+Settings B-FNC
+if O
+required O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Landing B-FNC
+Protection I-FNC
+Activated O
+Aircraft B-CMP
+will O
+decelerate O
+during O
+landing B-ACT
+
+To O
+take O
+off O
+in O
+mode O
+toggle O
+Flight O
+Mode O
+Switch O
+to O
+another O
+mode O
+and O
+then O
+toggle O
+it O
+back O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Updated O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Switched O
+to O
+P B-STE
+Positioning B-STE
+Mode I-STE
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+Recorded O
+RTH B-ACT
+Altitude O
+30m O
+
+Fly O
+with O
+caution O
+and O
+ensure O
+the O
+aircraft B-CMP
+remains O
+within O
+your O
+line O
+of O
+sight O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+GPS B-FNC
+Position O
+Mismatch O
+
+Home O
+Point O
+recorded O
+ft O
+
+GPS B-FNC
+Position O
+Mismatch O

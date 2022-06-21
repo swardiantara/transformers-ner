@@ -1,4 +1,5 @@
 from collections import defaultdict
+from unittest import result
 import numpy as np
 from seqeval.metrics import classification_report
 
@@ -302,6 +303,218 @@ def convert_span_to_bio(starts, ends):
         labels.append(label)
     return labels
 
+
+def evaluation_table(flattened_true_list, flattened_pred_list):
+    # Build the results object dynamically from unique list of flattened_true list value
+    # Take the intersection between the true and pred list
+    results = {
+        'O' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'B-ACT' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'I-ACT' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'B-CMP' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'I-CMP' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'B-FNC' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'I-FNC' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'B-ISS' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'I-ISS' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'B-STE' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        },
+        'I-STE' : {
+            'tp': 0,
+            'fp': 0,
+            'fn': 0,
+            'support': 0
+        }
+    }
+    # i = 1
+    # j = 1
+    # for true in flattened_true_list:
+    #         for pred in flattened_pred_list:
+    #             if (i == j and true == pred): results[true]['tp'] += 1
+    #             elif (i != j and true != pred): 
+    #                 results[true]['fn'] += 1
+    #                 results[pred]['fp'] += 1
+    #             j += 1
+    #         results[true]['support'] += 1
+    #         i += 1
+
+    for i in range (0, len(flattened_true_list)):
+        if(flattened_true_list[i] == flattened_pred_list[i]):
+            # true == pred
+            results[flattened_true_list[i]]['tp'] += 1
+        elif(flattened_true_list[i] != flattened_pred_list[i]):
+            # true != pred
+            results[flattened_true_list[i]]['fn'] += 1
+            results[flattened_pred_list[i]]['fp'] += 1
+        results[flattened_true_list[i]]['support'] += 1
+
+    return results
+
+
+def evaluation_score_model(evaluation_table):
+    evaluation_score = {
+        'O' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'B-ACT' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'I-ACT' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'B-CMP' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'I-CMP' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'B-f1C' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'I-f1C' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'B-ISS' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'I-ISS' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'B-STE' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'I-STE' : {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'micro_avg': {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'macro_avg': {
+            'precision': 0,
+            'recall': 0,
+            'f1': 0
+        },
+        'accuracy': 0
+    }
+
+    sum = {
+        'tp': 0,
+        'fp': 0,
+        'fn': 0,
+        'precision': 0,
+        'recall': 0,
+        'f1': 0,
+        'support': 0
+    }
+
+    for tag in evaluation_table:
+        # Compute per class evaluation score
+        precision = tag['tp'] / (tag['tp'] + tag['fp'])
+        recall = tag['tp'] / (tag['tp'] + tag['fn'])
+        f1 = (2* (precision*recall)) / (precision + recall)
+
+        evaluation_score[tag]['precision'] = precision
+        evaluation_score[tag]['recall'] = recall
+        evaluation_score[tag]['f1'] = f1
+
+        # Store the sum of per class TP, FP, FN for computing micro_avg
+        sum['tp'] = sum['tp'] + tag['tp']
+        sum['fp'] = sum['fp'] + tag['fp']
+        sum['fn'] = sum['fn'] + tag['fn']
+
+        # Store the sum of per class evaluation score (precision, recall and f1) computing for macro_avg
+        sum['precision'] = sum['precision'] + precision
+        sum['recall'] = sum['recall'] + recall
+        sum['f1'] = sum['f1'] + f1
+
+        # Store the sum of support for computing accuracy
+        sum['support'] = sum['support'] + tag['support']
+    
+    # Compute the macro_avg evaluation score
+    evaluation_score['macro_avg']['precision'] = sum['precision'] / len (evaluation_table)
+    evaluation_score['macro_avg']['recall'] = sum['recall'] / len (evaluation_table)
+    evaluation_score['macro_avg']['f1'] = sum['f1'] / len (evaluation_table)
+        
+    # Compute the micro_avg evaluation score
+    evaluation_score['micro_avg']['precision'] = sum['tp'] / (sum['tp'] + sum['fp'])
+    evaluation_score['micro_avg']['precision'] = sum['tp'] / (sum['tp'] + sum['fn'])
+    evaluation_score['micro_avg']['f1'] = sum['tp'] / (sum['tp'] + ((sum['fp'] + sum['fn']) / 2))
+    evaluation_score['accuracy'] = sum['tp'] / sum['support']
+
+    return evaluation_score
 # starts = [['O', 'O', 'O', 'MISC', 'O', 'O', 'O'], ['PER', 'O', 'O']]
 # ends = [['O', 'O', 'O', 'O', 'O', 'MISC', 'O'], ['O', 'PER', 'O']]
 #

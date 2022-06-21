@@ -11,6 +11,16 @@ from models.roberta_ner import RobertaCrfForNer, RobertaSoftmaxForNer, RobertaSp
 from models.xlm_ner import XLMCrfForNer, XLMSoftmaxForNer, XLMSpanForNer
 from models.distilbert_ner import DistilBertCrfForNer, DistilBertSoftmaxForNer, DistilBertSpanForNer
 
+from transformers import XLM_PRETRAINED_CONFIG_ARCHIVE_MAP, DISTILBERT_PRETRAINED_CONFIG_ARCHIVE_MAP, ROBERTA_PRETRAINED_CONFIG_ARCHIVE_MAP, BERT_PRETRAINED_CONFIG_ARCHIVE_MAP, ALBERT_PRETRAINED_CONFIG_ARCHIVE_MAP, ELECTRA_PRETRAINED_CONFIG_ARCHIVE_MAP
+# from transformers import DISTILBERT_PRETRAINED_HIDDEN_DROPOUT_PROB
+XLMConfig.pretrained_config_archive_map = XLM_PRETRAINED_CONFIG_ARCHIVE_MAP
+DistilBertConfig.pretrained_config_archive_map = DISTILBERT_PRETRAINED_CONFIG_ARCHIVE_MAP
+RobertaConfig.pretrained_config_archive_map = ROBERTA_PRETRAINED_CONFIG_ARCHIVE_MAP
+BertConfig.pretrained_config_archive_map = BERT_PRETRAINED_CONFIG_ARCHIVE_MAP
+AlbertConfig.pretrained_config_archive_map = ALBERT_PRETRAINED_CONFIG_ARCHIVE_MAP
+ElectraConfig.pretrained_config_archive_map = ELECTRA_PRETRAINED_CONFIG_ARCHIVE_MAP
+
+
 MODEL_FOR_SOFTMAX_NER_MAPPING = OrderedDict(
     [
         (XLMConfig, XLMSoftmaxForNer),

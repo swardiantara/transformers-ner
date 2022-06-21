@@ -3,3 +3,9 @@
 
 # Pytorch model
 *.bin
+
+# Cache Folder
+__pycache__
+
+# Cache Files
+

@@ -20,12 +20,14 @@ import logging
 import os
 import random
 import sys
+from typing import Dict
 
 sys.path.append('../')
 
 import numpy as np
 import torch
-from utils.utils_metrics import get_entities_bio, f1_score, classification_report
+# from seqeval.metrics import classification_report
+from utils.utils_metrics import get_entities_bio, recall_score, precision_score, f1_score, classification_report
 from torch.nn import CrossEntropyLoss
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from torch.utils.data.distributed import DistributedSampler
@@ -236,6 +238,11 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
 
                 if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
                     # Log metrics
+                    results = {
+                        'f1': 0.0,
+                        'loss': 0.0,
+                        'report': {}
+                    }
                     if (
                             args.local_rank == -1 and args.evaluate_during_training
                     ):  # Only evaluate when single GPU otherwise metrics may not average well
@@ -250,7 +257,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
 
                     if best_score < results['f1']:
                         best_score = results['f1']
-                        output_dir = os.path.join(args.output_dir, "best_checkpoint")
+                        output_dir = args.output_dir #os.path.join(args.output_dir, "best_checkpoint")
                         if not os.path.exists(output_dir):
                             os.makedirs(output_dir)
                         model_to_save = (
@@ -340,12 +347,26 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
                 trues_list[i].append(label_map[trues[i][j]])
                 preds_list[i].append(label_map[preds[i][j]])
 
+    print("True list shape: ", len(trues_list))
+    print("Pred list shape: ", len(preds_list))
+
+    flattened_true_list = [element for sublist in trues_list for element in sublist]
+    flattened_pred_list = [element for sublist in preds_list for element in sublist]
+    
+    print("Flattened True list shape: ", len(flattened_true_list))
+    print("Flattened Pred list shape: ", len(flattened_pred_list))
+
+    # Compute evaluation score using custom code
+
     true_entities = get_entities_bio(trues_list)
     pred_entities = get_entities_bio(preds_list)
+    
     results = {
         "loss": eval_loss,
         "f1": f1_score(true_entities, pred_entities),
-        'report': classification_report(true_entities, pred_entities)
+        "recall_score": recall_score(true_entities, pred_entities),
+        "precision_score": precision_score(true_entities, pred_entities),
+        "report": classification_report(true_entities, pred_entities)
     }
 
     output_eval_file = os.path.join(args.output_dir, "eval_results.txt")
@@ -677,7 +698,7 @@ def main():
     # Evaluation
     if args.do_eval and args.local_rank in [-1, 0]:
         tokenizer = AutoTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
-        checkpoint = os.path.join(args.output_dir, 'best_checkpoint')
+        checkpoint = args.output_dir # os.path.join(args.output_dir, 'best_checkpoint')
         model = AutoModelForSoftmaxNer.from_pretrained(checkpoint)
         model.to(args.device)
         results, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev", prefix='dev')
@@ -688,7 +709,7 @@ def main():
 
     if args.do_predict and args.local_rank in [-1, 0]:
         tokenizer = AutoTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
-        checkpoint = os.path.join(args.output_dir, 'best_checkpoint')
+        checkpoint = args.output_dir # os.path.join(args.output_dir, 'best_checkpoint')
         model = AutoModelForSoftmaxNer.from_pretrained(checkpoint)
         model.to(args.device)
         results, predictions = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="test", prefix='test')

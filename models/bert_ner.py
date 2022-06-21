@@ -39,7 +39,7 @@ class BertSoftmaxForNer(BertPreTrainedModel):
             token_type_ids=token_type_ids,
             position_ids=position_ids,
             head_mask=head_mask,
-            inputs_embeds=inputs_embeds
+            # inputs_embeds=inputs_embeds
         )
         sequence_output = outputs[0]
         sequence_output, attention_mask = valid_sequence_output(sequence_output, valid_mask, attention_mask)

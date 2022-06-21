@@ -1,14 +1,19 @@
 #!/bin/bash
 
-DATA_DIR=''
-MODEL_TYPE=''
-MODEL_NAME_OR_PATH=''
-OUTPUT_DIR=''
-LABEL=''
+DATA_DIR='/datasets/conll2003'
+MODEL_TYPE='bert'
+MODEL_NAME_OR_PATH='bert-base-cased'
+OUTPUT_DIR='outputs'
+LABEL='/datasets/conll2003/labels.txt'
+# DATA_DIR=''
+# MODEL_TYPE=''
+# MODEL_NAME_OR_PATH=''
+# OUTPUT_DIR=''
+# LABEL=''
 
 CUDA_VISIBLE_DEVICES='1' python ../examples/run_softmax_ner.py \
 --data_dir $DATA_DIR \
---model_type $MODEL_MODEL_TYPE \
+--model_type $MODEL_TYPE \
 --model_name_or_path $MODEL_NAME_OR_PATH \
 --output_dir $OUTPUT_DIR \
 --labels $LABEL \

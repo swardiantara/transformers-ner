@@ -2,6 +2,8 @@ import logging
 import os
 import torch
 from utils.utils_metrics import get_entities
+import pathlib
+current_dir = pathlib.Path(__file__).parent.resolve()
 
 logger = logging.getLogger(__name__)
 
