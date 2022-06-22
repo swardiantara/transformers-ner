@@ -20,14 +20,16 @@ import logging
 import os
 import random
 import sys
+import json
 from typing import Dict
 
 sys.path.append('../')
 
 import numpy as np
+import pandas as pd
 import torch
 # from seqeval.metrics import classification_report
-from utils.utils_metrics import get_entities_bio, recall_score, precision_score, f1_score, classification_report
+from utils.utils_metrics import evaluation_score_model, evaluation_table, get_entities_bio, recall_score, precision_score, f1_score, classification_report, to_entity_type
 from torch.nn import CrossEntropyLoss
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from torch.utils.data.distributed import DistributedSampler
@@ -347,26 +349,54 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
                 trues_list[i].append(label_map[trues[i][j]])
                 preds_list[i].append(label_map[preds[i][j]])
 
-    print("True list shape: ", len(trues_list))
-    print("Pred list shape: ", len(preds_list))
+    # print("True list shape: ", len(trues_list))
+    # print("Pred list shape: ", len(preds_list))
 
+    # Flatten the True Labels and Pred Labels.
     flattened_true_list = [element for sublist in trues_list for element in sublist]
     flattened_pred_list = [element for sublist in preds_list for element in sublist]
     
-    print("Flattened True list shape: ", len(flattened_true_list))
-    print("Flattened Pred list shape: ", len(flattened_pred_list))
+    # Get the Labels as Entity type, instead of IOB2 tagging scheme
+    non_strict_true, non_strict_pred = to_entity_type(flattened_true_list, flattened_pred_list)
 
+    # Save the confusioin matrix for further analysis
+    strict_labels_data = pd.DataFrame({'actual_class': flattened_true_list, 'predicted_class': flattened_pred_list})
+    strict_confusion_matrix = pd.crosstab(strict_labels_data['predicted_class'], strict_labels_data['actual_class'])
+    # confusion_matrix.to_excel(os.path.join(args.output_dir, "confusion_matrix.xlsx"), sheet_name='Strict')
+
+    non_strcit_labels_data = pd.DataFrame({'actual_class': non_strict_true, 'predicted_class': non_strict_pred})
+    non_strict_confusion_matrix = pd.crosstab(non_strcit_labels_data['predicted_class'], non_strcit_labels_data['actual_class'])
+    # confusion_matrix.to_excel(os.path.join(args.output_dir, "confusion_matrix.xlsx"), sheet_name='Non Strict')
+    with pd.ExcelWriter(os.path.join(args.output_dir, "confusion_matrix.xlsx")) as writer:  
+        strict_confusion_matrix.to_excel(writer, sheet_name='Strict')
+        non_strict_confusion_matrix.to_excel(writer, sheet_name='Non Strict')
+    
     # Compute evaluation score using custom code
+    strcit_results = evaluation_table(flattened_true_list, flattened_pred_list)
+    strcit_evaluation_score = evaluation_score_model(strcit_results)
+    non_strcit_results = evaluation_table(non_strict_true, non_strict_pred)
+    non_strcit_evaluation_score = evaluation_score_model(non_strcit_results)
+    
+    # Save the evaluation score to json file
+    with open(os.path.join(args.output_dir, "strcit_evaluation_table.json"), "w") as outfile:
+        json.dump(strcit_results, outfile)
+    with open(os.path.join(args.output_dir, "strict_evaluation_score.json"), "w") as outfile:
+        json.dump(strcit_evaluation_score, outfile)
+    with open(os.path.join(args.output_dir, "non_strcit_evaluation_table.json"), "w") as outfile:
+        json.dump(non_strcit_results, outfile)
+    with open(os.path.join(args.output_dir, "non_strict_evaluation_score.json"), "w") as outfile:
+        json.dump(non_strcit_evaluation_score, outfile)
+
 
     true_entities = get_entities_bio(trues_list)
     pred_entities = get_entities_bio(preds_list)
     
     results = {
         "loss": eval_loss,
-        "f1": f1_score(true_entities, pred_entities),
-        "recall_score": recall_score(true_entities, pred_entities),
-        "precision_score": precision_score(true_entities, pred_entities),
-        "report": classification_report(true_entities, pred_entities)
+        "f1": strcit_evaluation_score['micro_avg']['f1'],
+        "recall_score": strcit_evaluation_score['micro_avg']['recall'],
+        "precision_score": strcit_evaluation_score['micro_avg']['precision'],
+        # "report": classification_report(true_entities, pred_entities)
     }
 
     output_eval_file = os.path.join(args.output_dir, "eval_results.txt")
@@ -380,7 +410,7 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
             if key == 'report_dict':
                 continue
             logger.info("{} = {}".format(key, str(results[key])))
-            writer.write("{} = {}\n".format(key, str(results[key])))
+            writer.write("\n{} = {}\n".format(key, str(results[key])))
     return results, preds_list
 
 
@@ -705,7 +735,7 @@ def main():
         output_eval_file = os.path.join(args.output_dir, "eval_results.txt")
         with open(output_eval_file, "a") as writer:
             writer.write('***** Predict in dev dataset *****')
-            writer.write("{} = {}\n".format('report', str(results['report'])))
+            # writer.write("\n{} = {}\n".format('report', str(results['report'])))
 
     if args.do_predict and args.local_rank in [-1, 0]:
         tokenizer = AutoTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
@@ -717,7 +747,7 @@ def main():
         output_test_results_file = os.path.join(args.output_dir, "test_results.txt")
         with open(output_test_results_file, "w") as writer:
             writer.write('***** Predict in dev dataset *****')
-            writer.write("{} = {}\n".format('report', str(results['report'])))
+            # writer.write("\n{} = {}\n".format('report', str(results['report'])))
 
         # Save predictions
         output_test_predictions_file = os.path.join(args.output_dir, "test_predictions.txt")

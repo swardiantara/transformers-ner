@@ -201,38 +201,105 @@ def get_entities_span(starts, ends):
     return set(chunks)
 
 
-def f1_score(true_entities, pred_entities):
+def f1_score(precision, recall):
     """Compute the F1 score."""
-    nb_correct = len(true_entities & pred_entities)
-    nb_pred = len(pred_entities)
-    nb_true = len(true_entities)
+    score = 0
+    try:
+        score = (2 * precision * recall) / (precision + recall)
+    except ZeroDivisionError:
+        print('Cannot devide by zero.')    
+    # nb_correct = len(true_entities & pred_entities)
+    # nb_pred = len(pred_entities)
+    # nb_true = len(true_entities)
 
-    p = nb_correct / nb_pred if nb_pred > 0 else 0
-    r = nb_correct / nb_true if nb_true > 0 else 0
-    score = 2 * p * r / (p + r) if p + r > 0 else 0
+    # p = nb_correct / nb_pred if nb_pred > 0 else 0
+    # r = nb_correct / nb_true if nb_true > 0 else 0
+    # score = 2 * p * r / (p + r) if p + r > 0 else 0
 
     return score
 
 
-def precision_score(true_entities, pred_entities):
+def precision_score(true_positive, false_positive):
     """Compute the precision."""
-    nb_correct = len(true_entities & pred_entities)
-    nb_pred = len(pred_entities)
+    score = 0
+    try:
+        score = true_positive / (true_positive + false_positive)
+    except ZeroDivisionError:
+        print('Cannot devide by zero.')
 
-    score = nb_correct / nb_pred if nb_pred > 0 else 0
+    # nb_correct = len(true_entities & pred_entities)
+    # nb_pred = len(pred_entities)
+
+    # score = nb_correct / nb_pred if nb_pred > 0 else 0
 
     return score
 
 
-def recall_score(true_entities, pred_entities):
+def recall_score(true_positive, false_negative):
     """Compute the recall."""
-    nb_correct = len(true_entities & pred_entities)
-    nb_true = len(true_entities)
+    score = 0
+    try:
+        score = true_positive / (true_positive + false_negative)
+    except ZeroDivisionError:
+        print('Cannot devide by zero.')
+    # nb_correct = len(true_entities & pred_entities)
+    # nb_true = len(true_entities)
 
-    score = nb_correct / nb_true if nb_true > 0 else 0
+    # score = nb_correct / nb_true if nb_true > 0 else 0
 
     return score
 
+
+def accuracy_score(sum_true_positive, sum_support):
+    """Compute the Accuracy."""
+    score = 0
+    try:
+        score = sum_true_positive / sum_support
+    except ZeroDivisionError:
+        print('Cannot devide by zero.')
+    # nb_correct = len(true_entities & pred_entities)
+    # nb_true = len(true_entities)
+
+    # score = nb_correct / nb_true if nb_true > 0 else 0
+
+    return score
+
+
+def macro_average(sum_score, num_class):
+    """Compute the Macro Average Evaluation Score."""
+    score = 0
+    try:
+        score = sum_score / num_class
+    except ZeroDivisionError:
+        print('Cannot devide by zero.')
+    # nb_correct = len(true_entities & pred_entities)
+    # nb_true = len(true_entities)
+
+    # score = nb_correct / nb_true if nb_true > 0 else 0
+
+    return score
+
+
+def micro_average(sum_true_positive, sum_false_negative, sum_false_positive, metric):
+    """Compute the Micro Average Evaluation Score."""
+    score = 0
+    try:
+        assert metric in ['f1', 'recall', 'precision']
+        if(metric == 'f1'):
+            score = sum_true_positive / (sum_true_positive + ((sum_false_positive + sum_false_negative) / 2))
+        elif(metric == 'precision'):
+            score = sum_true_positive / (sum_true_positive + sum_false_positive)
+        else: # recall
+            score = sum_true_positive / (sum_true_positive + sum_false_negative)
+    except ZeroDivisionError:
+        print('Cannot devide by zero.')
+
+    # nb_correct = len(true_entities & pred_entities)
+    # nb_true = len(true_entities)
+
+    # score = nb_correct / nb_true if nb_true > 0 else 0
+
+    return score
 
 def classification_report(true_entities, pred_entities, digits=5):
     """Build a text report showing the main classification metrics."""
@@ -306,75 +373,89 @@ def convert_span_to_bio(starts, ends):
 
 def evaluation_table(flattened_true_list, flattened_pred_list):
     # Build the results object dynamically from unique list of flattened_true list value
-    # Take the intersection between the true and pred list
-    results = {
-        'O' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'B-ACT' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'I-ACT' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'B-CMP' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'I-CMP' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'B-FNC' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'I-FNC' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'B-ISS' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'I-ISS' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'B-STE' : {
-            'tp': 0,
-            'fp': 0,
-            'fn': 0,
-            'support': 0
-        },
-        'I-STE' : {
+    # Take the union between the true and pred list labels
+    class_list = list(set(flattened_true_list).union(set(flattened_pred_list)))
+    results = {}
+    for class_name in class_list:
+        results[class_name] = {
             'tp': 0,
             'fp': 0,
             'fn': 0,
             'support': 0
         }
-    }
+        # ['tp'] = 0
+        # results[class_name]['fp'] = 0
+        # results[class_name]['fn'] = 0
+        # results[class_name]['support'] = 0
+    
+    # results = {
+    #     'O' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'B-ACT' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'I-ACT' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'B-CMP' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'I-CMP' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'B-FNC' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'I-FNC' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'B-ISS' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'I-ISS' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'B-STE' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     },
+    #     'I-STE' : {
+    #         'tp': 0,
+    #         'fp': 0,
+    #         'fn': 0,
+    #         'support': 0
+    #     }
+    # }
     # i = 1
     # j = 1
     # for true in flattened_true_list:
@@ -401,74 +482,80 @@ def evaluation_table(flattened_true_list, flattened_pred_list):
 
 
 def evaluation_score_model(evaluation_table):
-    evaluation_score = {
-        'O' : {
+    evaluation_score = {}
+    for label, value in evaluation_table.items():
+        evaluation_score[label] = {
             'precision': 0,
             'recall': 0,
             'f1': 0
-        },
-        'B-ACT' : {
+        }
+    # evaluation_score = {
+    #     'O' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'B-ACT' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'I-ACT' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'B-CMP' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'I-CMP' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'B-FNC' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'I-FNC' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'B-ISS' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'I-ISS' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'B-STE' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    #     'I-STE' : {
+    #         'precision': 0,
+    #         'recall': 0,
+    #         'f1': 0
+    #     },
+    evaluation_score['micro_avg'] = {
             'precision': 0,
             'recall': 0,
             'f1': 0
-        },
-        'I-ACT' : {
+        }
+    evaluation_score['macro_avg'] = {
             'precision': 0,
             'recall': 0,
             'f1': 0
-        },
-        'B-CMP' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'I-CMP' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'B-f1C' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'I-f1C' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'B-ISS' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'I-ISS' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'B-STE' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'I-STE' : {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'micro_avg': {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'macro_avg': {
-            'precision': 0,
-            'recall': 0,
-            'f1': 0
-        },
-        'accuracy': 0
-    }
+        }
+    evaluation_score['accuracy'] = 0
 
     sum = {
         'tp': 0,
@@ -480,41 +567,59 @@ def evaluation_score_model(evaluation_table):
         'support': 0
     }
 
-    for tag in evaluation_table:
+    for tag, value in evaluation_table.items(): # for key, value in d.items()
+        # print(tag)
         # Compute per class evaluation score
-        precision = tag['tp'] / (tag['tp'] + tag['fp'])
-        recall = tag['tp'] / (tag['tp'] + tag['fn'])
-        f1 = (2* (precision*recall)) / (precision + recall)
 
-        evaluation_score[tag]['precision'] = precision
-        evaluation_score[tag]['recall'] = recall
-        evaluation_score[tag]['f1'] = f1
+        # precision = evaluation_table[tag]['tp'] / (evaluation_table[tag]['tp'] + evaluation_table[tag]['fp'])
+        # recall = evaluation_table[tag]['tp'] / (evaluation_table[tag]['tp'] + evaluation_table[tag]['fn'])
+        # f1 = (2* (precision*recall)) / (precision + recall)
 
-        # Store the sum of per class TP, FP, FN for computing micro_avg
-        sum['tp'] = sum['tp'] + tag['tp']
-        sum['fp'] = sum['fp'] + tag['fp']
-        sum['fn'] = sum['fn'] + tag['fn']
+        evaluation_score[tag]['precision'] = precision_score(evaluation_table[tag]['tp'], evaluation_table[tag]['fp'])
+        evaluation_score[tag]['recall'] = recall_score(evaluation_table[tag]['tp'], evaluation_table[tag]['fn'])
+        evaluation_score[tag]['f1'] = f1_score(evaluation_score[tag]['precision'], evaluation_score[tag]['recall'])
 
-        # Store the sum of per class evaluation score (precision, recall and f1) computing for macro_avg
-        sum['precision'] = sum['precision'] + precision
-        sum['recall'] = sum['recall'] + recall
-        sum['f1'] = sum['f1'] + f1
+        # Store the sum of per class TP, FP, FN counts for computing micro_avg
+        sum['tp'] = sum['tp'] + evaluation_table[tag]['tp']
+        sum['fp'] = sum['fp'] + evaluation_table[tag]['fp']
+        sum['fn'] = sum['fn'] + evaluation_table[tag]['fn']
+
+        # Store the sum of per class evaluation score (precision, recall and f1) for computing macro_avg
+        sum['precision'] = sum['precision'] + evaluation_score[tag]['precision']
+        sum['recall'] = sum['recall'] + evaluation_score[tag]['recall']
+        sum['f1'] = sum['f1'] + evaluation_score[tag]['f1']
 
         # Store the sum of support for computing accuracy
-        sum['support'] = sum['support'] + tag['support']
+        sum['support'] = sum['support'] + evaluation_table[tag]['support']
     
     # Compute the macro_avg evaluation score
-    evaluation_score['macro_avg']['precision'] = sum['precision'] / len (evaluation_table)
-    evaluation_score['macro_avg']['recall'] = sum['recall'] / len (evaluation_table)
-    evaluation_score['macro_avg']['f1'] = sum['f1'] / len (evaluation_table)
+    # evaluation_score['macro_avg']['precision'] = macro_average(sum['precision'], len(evaluation_table))
+    # evaluation_score['macro_avg']['recall'] = macro_average(sum['recall'], len(evaluation_table))
+    # evaluation_score['macro_avg']['f1'] = macro_average(sum['f1'], len(evaluation_table))
         
-    # Compute the micro_avg evaluation score
-    evaluation_score['micro_avg']['precision'] = sum['tp'] / (sum['tp'] + sum['fp'])
-    evaluation_score['micro_avg']['precision'] = sum['tp'] / (sum['tp'] + sum['fn'])
-    evaluation_score['micro_avg']['f1'] = sum['tp'] / (sum['tp'] + ((sum['fp'] + sum['fn']) / 2))
-    evaluation_score['accuracy'] = sum['tp'] / sum['support']
+    # Compute the macro and micro average of the evaluation score
+    for metric in ['precision', 'recall', 'f1']:
+        evaluation_score['micro_avg'][metric] = micro_average(sum['tp'], sum['fn'], sum['fp'], metric)
+        evaluation_score['macro_avg'][metric] = macro_average(sum[metric], len(evaluation_table))
+    # evaluation_score['micro_avg']['recall'] = sum['tp'] / (sum['tp'] + )
+    # evaluation_score['micro_avg']['f1'] = sum['tp'] / (sum['tp'] + ((sum['fp'] + sum['fn']) / 2))
+    
+    # Compute the accuracy
+    evaluation_score['accuracy'] = accuracy_score(sum['tp'], sum['support'])
 
     return evaluation_score
+
+def to_entity_type(true_list, pred_list):
+    # Get the labels as the entity type, without B and I tag.
+    # input = ['B-ACT', 'I-ACT']
+    # output = ['ACT', 'ACT']
+    cleaned_true_list = []
+    cleaned_pred_list = []
+    for i in range (0, len(true_list)):
+        cleaned_true_list.append(true_list[i][-3:])
+        cleaned_pred_list.append(pred_list[i][-3:])
+
+    return cleaned_true_list, cleaned_pred_list
 # starts = [['O', 'O', 'O', 'MISC', 'O', 'O', 'O'], ['PER', 'O', 'O']]
 # ends = [['O', 'O', 'O', 'O', 'O', 'MISC', 'O'], ['O', 'PER', 'O']]
 #
