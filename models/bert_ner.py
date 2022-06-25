@@ -6,65 +6,73 @@ from transformers.modeling_bert import BertModel
 from transformers.modeling_bert import BertPreTrainedModel
 
 from .layers.linears import PoolerEndLogits, PoolerStartLogits
+from .layers.transformers import TransformerEncoder
 from .losses.crf import CRF
 from .losses.focal_loss import FocalLoss
 from .losses.label_smoothing import LabelSmoothingCrossEntropy
 from .model_utils import valid_sequence_output
 
 
-class BertSoftmaxForNer(BertPreTrainedModel):
-    def __init__(self, config):
-        super(BertSoftmaxForNer, self).__init__(config)
-        self.num_labels = config.num_labels
-        self.bert = BertModel(config)
-        self.dropout = nn.Dropout(config.hidden_dropout_prob)
-        self.classifier = nn.Linear(config.hidden_size, config.num_labels)
-        self.loss_type = config.loss_type
-        self.init_weights()
+# class BertSoftmaxForNer(BertPreTrainedModel):
+#     def __init__(self, config):
+#         super(BertSoftmaxForNer, self).__init__(config)
+#         self.num_labels = config.num_labels
+#         self.bert = BertModel(config)
+#         self.dropout = nn.Dropout(config.hidden_dropout_prob)
+#         self.classifier = nn.Linear(config.hidden_size, config.num_labels)
+#         self.loss_type = config.loss_type
+#         self.init_weights()
 
-    def forward(
-            self,
-            input_ids,
-            attention_mask=None,
-            token_type_ids=None,
-            position_ids=None,
-            head_mask=None,
-            inputs_embeds=None,
-            valid_mask=None,
-            labels=None
-    ):
-        outputs = self.bert(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            token_type_ids=token_type_ids,
-            position_ids=position_ids,
-            head_mask=head_mask,
-            # inputs_embeds=inputs_embeds
-        )
-        sequence_output = outputs[0]
-        sequence_output, attention_mask = valid_sequence_output(sequence_output, valid_mask, attention_mask)
-        sequence_output = self.dropout(sequence_output)
-        logits = self.classifier(sequence_output)
-        outputs = (logits,) + outputs[2:]  # add hidden states and attention if they are here
-
-        if labels is not None:
-            assert self.loss_type in ['lsr', 'focal', 'ce']
-            if self.loss_type == 'lsr':
-                loss_fct = LabelSmoothingCrossEntropy()
-            elif self.loss_type == 'focal':
-                loss_fct = FocalLoss()
-            else:
-                loss_fct = CrossEntropyLoss()
-            # Only keep active parts of the loss
-            if attention_mask is not None:
-                active_loss = attention_mask.view(-1) == 1
-                active_logits = logits.view(-1, self.num_labels)[active_loss]
-                active_labels = labels.view(-1)[active_loss]
-                loss = loss_fct(active_logits, active_labels)
-            else:
-                loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
-            outputs = (loss,) + outputs
-        return outputs  # (loss), scores, (hidden_states), (attentions)
+#     def forward(
+#             self,
+#             input_ids,
+#             attention_mask=None,
+#             token_type_ids=None,
+#             position_ids=None,
+#             head_mask=None,
+#             inputs_embeds=None,
+#             valid_mask=None,
+#             labels=None
+#     ):
+#         outputs = self.bert(
+#             input_ids=input_ids,
+#             attention_mask=attention_mask,
+#             token_type_ids=token_type_ids,
+#             position_ids=position_ids,
+#             head_mask=head_mask,
+#             # inputs_embeds=inputs_embeds
+#         )
+#         sequence_output = outputs[0]
+#         print("\nBert sequence output: ", sequence_output)
+#         sequence_output, attention_mask = valid_sequence_output(sequence_output, valid_mask, attention_mask)
+#         # print("Valid sequence output: ", sequence_output.shape)
+#         sequence_output = self.dropout(sequence_output)
+#         logits = self.classifier(sequence_output)
+#         # print("Logits size: ", logits.size())
+#         outputs = (logits,) + outputs[2:]  # add hidden states and attention if they are here
+#         # print("Classifier output size: ", outputs[0].size())
+#         # print("Size tensor 1: %s, tensor 2: %s", outputs[0].size(), outputs[1].size())
+#         # print("\nEnd of classifier output")
+#         if labels is not None:
+#             assert self.loss_type in ['lsr', 'focal', 'ce']
+#             if self.loss_type == 'lsr':
+#                 loss_fct = LabelSmoothingCrossEntropy()
+#             elif self.loss_type == 'focal':
+#                 loss_fct = FocalLoss()
+#             else:
+#                 loss_fct = CrossEntropyLoss()
+#             # Only keep active parts of the loss
+#             if attention_mask is not None:
+#                 active_loss = attention_mask.view(-1) == 1
+#                 active_logits = logits.view(-1, self.num_labels)[active_loss]
+#                 active_labels = labels.view(-1)[active_loss]
+#                 loss = loss_fct(active_logits, active_labels)
+#             else:
+#                 loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+#             outputs = (loss,) + outputs
+#         # print("Final output: ", len(outputs))
+#         # print("Size tensor 1: %s, tensor 2: %s, tensor 3: %s, tensor 4: %s", outputs[0].size(), outputs[1].size())
+#         return outputs  # (loss), scores, (hidden_states), (attentions)
 
 
 class BertCrfForNer(BertPreTrainedModel):
@@ -194,3 +202,73 @@ class BertSpanForNer(BertPreTrainedModel):
             total_loss = (start_loss + end_loss) / 2
             outputs = (total_loss,) + outputs
         return outputs
+
+
+class BertSoftmaxForNer(BertPreTrainedModel):
+    def __init__(self, config, attn_type: str, scaled: bool):
+        super(BertSoftmaxForNer, self).__init__(config, attn_type, scaled)
+        self.num_labels = config.num_labels
+        self.bert = BertModel(config)
+        self.encoder = TransformerEncoder(attn_type=attn_type, scaled=scaled, num_layers=1, dim_model=config.hidden_size, num_heads=8, dim_feedforward=config.intermediate_size, dropout=config.hidden_dropout_prob)
+        self.dropout = nn.Dropout(config.hidden_dropout_prob)
+        self.classifier = nn.Linear(config.hidden_size, config.num_labels)
+        self.loss_type = config.loss_type
+        self.init_weights()
+
+    def forward(
+            self,
+            input_ids,
+            attention_mask=None,
+            token_type_ids=None,
+            position_ids=None,
+            head_mask=None,
+            inputs_embeds=None,
+            valid_mask=None,
+            labels=None
+    ):
+        # print("Input ids: \n", input_ids)
+        # print("Attention mask: \n", attention_mask)
+        # print("Token Type ids: \n", token_type_ids)
+        # print("Position ids: \n", position_ids)
+        # print("Head mask : \n", head_mask)
+        outputs = self.bert(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            token_type_ids=token_type_ids,
+            position_ids=position_ids,
+            head_mask=head_mask,
+            # inputs_embeds=inputs_embeds
+        )
+        sequence_output = outputs[0]
+        # print("\nBert sequence output: ", sequence_output)
+        sequence_output, attention_mask = valid_sequence_output(sequence_output, valid_mask, attention_mask)
+        # print("Valid sequence output: ", sequence_output)
+        # print("Sequence Output: \n", sequence_output)
+        dropout = self.dropout(sequence_output)
+        encoder_output = self.encoder(dropout)
+        # print("Encoder output: ", encoder_output)
+        logits = self.classifier(encoder_output)
+        # print("Logits size: ", logits.size())
+        outputs = (logits,) + outputs[2:]  # add hidden states and attention if they are here
+        # print("Classifier output size: ", outputs[0].size())
+        # print("\nEnd of classifier output")
+        if labels is not None:
+            assert self.loss_type in ['lsr', 'focal', 'ce']
+            if self.loss_type == 'lsr':
+                loss_fct = LabelSmoothingCrossEntropy()
+            elif self.loss_type == 'focal':
+                loss_fct = FocalLoss()
+            else:
+                loss_fct = CrossEntropyLoss()
+            # Only keep active parts of the loss
+            if attention_mask is not None:
+                active_loss = attention_mask.view(-1) == 1
+                active_logits = logits.view(-1, self.num_labels)[active_loss]
+                active_labels = labels.view(-1)[active_loss]
+                loss = loss_fct(active_logits, active_labels)
+            else:
+                loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+            outputs = (loss,) + outputs
+        # print("Loss: ", outputs[0])
+        # print("Size tensor 1: %d, tensor 2: %s, tensor 3: %s, tensor 4: %s", outputs[0], outputs[1].size())
+        return outputs  # (loss), scores, (hidden_states), (attentions)

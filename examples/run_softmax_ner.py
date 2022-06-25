@@ -16,6 +16,7 @@
 """ Fine-tuning the library models for named entity recognition on CoNLL-2003 (Bert or Roberta). """
 
 import argparse
+from email.policy import default
 import logging
 import os
 import random
@@ -94,6 +95,12 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
     # Prepare optimizer and schedule (linear warmup and decay)
     no_decay = ["bias", "LayerNorm.weight"]
     bert_parameters = eval('model.{}'.format(args.model_type)).named_parameters()
+    # print("Type of bert params : ", type(bert_parameters))
+    if args.freeze_bert_params:
+        for name, param in bert_parameters:
+            # print("param type: ", type(param))
+            param.requires_grad = False
+    encoder_parameters = model.encoder.named_parameters()
     classifier_parameters = model.classifier.named_parameters()
     args.bert_lr = args.bert_lr if args.bert_lr else args.learning_rate
     args.classifier_lr = args.classifier_lr if args.classifier_lr else args.learning_rate
@@ -110,7 +117,14 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
          "lr": args.classifier_lr},
         {"params": [p for n, p in classifier_parameters if any(nd in n for nd in no_decay)],
          "weight_decay": 0.0,
-         "lr": args.classifier_lr}
+         "lr": args.classifier_lr},
+
+         {"params": [p for n, p in encoder_parameters if not any(nd in n for nd in no_decay)],
+         "weight_decay": args.weight_decay,
+         "lr": args.classifier_lr},
+        {"params": [p for n, p in encoder_parameters if any(nd in n for nd in no_decay)],
+         "weight_decay": 0.0,
+         "lr": args.classifier_lr},
     ]
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate, eps=args.adam_epsilon)
     scheduler = get_linear_schedule_with_warmup(
@@ -608,8 +622,12 @@ def main():
     parser.add_argument("--local_rank", type=int, default=-1, help="For distributed training: local_rank")
     parser.add_argument("--server_ip", type=str, default="", help="For distant debugging.")
     parser.add_argument("--server_port", type=str, default="", help="For distant debugging.")
+    parser.add_argument("--attention_type", choices=['dot_product', 'cosine'], type=str, default='dot_product', help="Attention type for computing attention score")
+    parser.add_argument("--scaled", action="store_true", help="Wether to scale the attention score")
+    parser.add_argument("--freeze_bert_params", action="store_true", help="Wether to freeze the BERT parameters")
     args = parser.parse_args()
-
+    args.output_dir = os.path.join(args.output_dir, "{}_{}_{}_{}".format('scaled' if args.scaled else 'unscaled', args.attention_type, 'freezed' if args.freeze_bert_params else 'unfreezed', args.num_train_epochs))
+    print("Output Dir : ", args.output_dir)
     if (
             os.path.exists(args.output_dir)
             and os.listdir(args.output_dir)
@@ -680,6 +698,8 @@ def main():
     )
     #####
     setattr(config, 'loss_type', args.loss_type)
+    # setattr(config, 'attn_type', args.attention_type)
+    # setattr(config, 'scaled', args.scaled)
     #####
     tokenizer_args = {k: v for k, v in vars(args).items() if v is not None and k in TOKENIZER_ARGS}
     logger.info("Tokenizer arguments: %s", tokenizer_args)
@@ -692,6 +712,8 @@ def main():
         args.model_name_or_path,
         from_tf=bool(".ckpt" in args.model_name_or_path),
         config=config,
+        attn_type=args.attention_type,
+        scaled=args.scaled,
         cache_dir=args.cache_dir if args.cache_dir else None,
     )
 
@@ -729,7 +751,7 @@ def main():
     if args.do_eval and args.local_rank in [-1, 0]:
         tokenizer = AutoTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
         checkpoint = args.output_dir # os.path.join(args.output_dir, 'best_checkpoint')
-        model = AutoModelForSoftmaxNer.from_pretrained(checkpoint)
+        model = AutoModelForSoftmaxNer.from_pretrained(checkpoint, attn_type=args.attention_type, scaled=args.scaled)
         model.to(args.device)
         results, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev", prefix='dev')
         output_eval_file = os.path.join(args.output_dir, "eval_results.txt")
@@ -740,7 +762,7 @@ def main():
     if args.do_predict and args.local_rank in [-1, 0]:
         tokenizer = AutoTokenizer.from_pretrained(args.output_dir, **tokenizer_args)
         checkpoint = args.output_dir # os.path.join(args.output_dir, 'best_checkpoint')
-        model = AutoModelForSoftmaxNer.from_pretrained(checkpoint)
+        model = AutoModelForSoftmaxNer.from_pretrained(checkpoint, attn_type=args.attention_type, scaled=args.scaled)
         model.to(args.device)
         results, predictions = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="test", prefix='test')
         # Save results
